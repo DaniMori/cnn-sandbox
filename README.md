@@ -1,32 +1,21 @@
 
-# Respository `<repository-name>`
+# Respository `cnn-sandbox`
 
-<repository-description>
+A Convolutional Neural Network playground!
 
 # License
 
-This template is licensed under the [Creative Commons Attribution 4.0
+This project is licensed under the [Creative Commons Attribution 4.0
 International license](https://creativecommons.org/licenses/by/4.0/).
 Please see the [license file](LICENSE.md).
 
-When using this template, please don’t forget to:
+## Components
 
-- Adapt this license section to your own needs
-
-- License your own content, and remember that [open is
-  better](https://choosealicense.com/).
-
-- Link to the [original
-  license](https://creativecommons.org/licenses/by/4.0/) and give
-  appropriate credit; please do so by including the following in the
-  “License” section of your project:
-
-  > This project makes use of the
-  > [rproj-template](https://github.com/DaniMori/rproj-template) Github
-  > template created by [Daniel Morillo](https://github.com/DaniMori)
-  > and licensed under the [Creative Commons Attribution 4.0
-  > International
-  > license](https://creativecommons.org/licenses/by/4.0/).
+This project makes use of the
+[rproj-template](https://github.com/DaniMori/rproj-template) Github
+template created by [Daniel Morillo](https://github.com/DaniMori) and
+licensed under the [Creative Commons Attribution 4.0 International
+license](https://creativecommons.org/licenses/by/4.0/).
 
 # Project installation
 
@@ -64,7 +53,7 @@ instructions](https://book.cds101.com/using-rstudio-server-to-clone-a-github-rep
 specified. The URL that must be entered into the `Repository URL` text
 box is:
 
-    <repository_url>
+    https://github.com/DaniMori/cnn-sandbox.git
 
 After cloning the repository, the Rstudio project will open
 automatically in the Rstudio IDE. If it doesn’t, or you want to return
@@ -102,7 +91,7 @@ renv::restore()
 
 The file structure of this repository is as follows:
 
-    <repository-folder>
+    cnn-sandbox
     |
     |--- dat          (To store input datasets; must NEVER be checked-in to Github)
     |
