@@ -1,8 +1,7 @@
 ---
 title: "Install Tensorflow"
 author: "Daniel Morillo"
-format: html
-editor: visual
+output: html_notebook
 ---
 
 # Introduction
@@ -17,9 +16,6 @@ guide](https://tensorflow.rstudio.com/install/).
 # The repository URL needs to be specified when calling `install.packages()`
 #   from a non-interactive session:
 REPO_URL <- "https://cran.rstudio.com"
-
-# The following line may need to be adapted:
-PYTHON_PATH <- r"(~\..\AppData\Local\Programs\Python\Python311\python.exe)"
 ```
 
 We will not be using GPUs, but in order to make it simple, we will use the
@@ -45,8 +41,6 @@ used):
 # Install and configure Python installation:
 library(reticulate)
 
-## TODO: Check in line 22 that the path to the Python installation is correct
-# path_to_python <- use_python(python = PYTHON_PATH)
 path_to_python <- install_python()
 
 virtualenv_create("r-reticulate", python = path_to_python)
@@ -54,14 +48,13 @@ virtualenv_create("r-reticulate", python = path_to_python)
 
 The tutorial gives us two options at this step: either install TensorFlow
 directly, or install Keras, which includes TensorFlow and some other common
-packages. In case I may need any of those packages later on, I go with the
-second option and install Keras:
+packages. After trying the second option (in case I needed any of those packages
+later on), I install the TensorFlow library directly:
 
 ```{r install-keras}
-# Install keras (along with dependencies);
-install.packages("keras", repos = REPO_URL)
-library(keras)
-install_keras(envname = "r-reticulate")
+# Install Tensorflow;
+library(tensorflow)
+install_tensorflow()
 ```
 
 # Verification
@@ -72,6 +65,16 @@ I verify that the installation of TensorFlow is correct:
 # Confirm installation of TensorFlow:
 library(tensorflow)
 tf$constant("Hello Tensorflow!")
+```
+
+## Installation of virtual environment
+
+In a previous attempt, the installation of Tensorflow seemed to fail because a
+virtual environment was missing. If that happens, run the following (and then
+run again chunk `check-installation` above):
+
+```{r install-miniconda-env}
+reticulate::install_miniconda()
 ```
 
 # Versioning
