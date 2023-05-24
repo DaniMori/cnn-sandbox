@@ -1,0 +1,86 @@
+---
+title: "Install Tensorflow"
+author: "Daniel Morillo"
+output: html_notebook
+---
+
+# Introduction
+
+This notebook installs the environment components needed to interact with
+TensorFlow from R. It follows [the "Tensorflow for R" installation
+guide](https://tensorflow.rstudio.com/install/).
+
+# Installation
+
+```{r config}
+# The repository URL needs to be specified when calling `install.packages()`
+#   from a non-interactive session:
+REPO_URL <- "https://cran.rstudio.com"
+```
+
+We will not be using GPUs, but in order to make it simple, we will use the
+standard installation steps. Therefore, we will just follow the normal steps.
+First, we install the TensorFlow package for R:
+
+```{r install-tensorflow}
+# Install TensorFlow package:
+install.packages("tensorflow", repos = REPO_URL)
+```
+
+When creating the virtual environment after installing the Python environment,
+there seems to be a problem when R is restarted after installing Keras, making
+the virtual environment in the new Python installation to not be used (this may
+be due to having a prior version of Python installed). So instead of installing
+a version of Python automatically, I download manually the latest version from
+[the download page](https://www.python.org/downloads/) and install it manually
+(in Windows the [direct download
+link](https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe) can be
+used):
+
+```{r config-python}
+# Install and configure Python installation:
+library(reticulate)
+
+path_to_python <- install_python()
+
+virtualenv_create("r-reticulate", python = path_to_python)
+```
+
+The tutorial gives us two options at this step: either install TensorFlow
+directly, or install Keras, which includes TensorFlow and some other common
+packages. After trying the second option (in case I needed any of those packages
+later on), I install the TensorFlow library directly:
+
+```{r install-keras}
+# Install Tensorflow;
+library(tensorflow)
+install_tensorflow()
+```
+
+# Verification
+
+I verify that the installation of TensorFlow is correct:
+
+```{r check-installation}
+# Confirm installation of TensorFlow:
+library(tensorflow)
+tf$constant("Hello Tensorflow!")
+```
+
+## Installation of virtual environment
+
+In a previous attempt, the installation of Tensorflow seemed to fail because a
+virtual environment was missing. If that happens, run the following (and then
+run again chunk `check-installation` above):
+
+```{r install-miniconda-env}
+reticulate::install_miniconda()
+```
+
+# Versioning
+
+As a last step, we make sure to add all the new packages to the R environment:
+
+```{r version-renv}
+renv::snapshot(prompt = FALSE)
+```
