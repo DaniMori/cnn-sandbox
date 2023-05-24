@@ -1,0 +1,13 @@
+---
+title: "CNN Tutorial in R"
+author: "Daniel Morillo"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+# Introduction
+
+This notebook follows the tutorial [Convolutional Neural Networks in
+R](https://poissonisfish.com/2018/07/08/convolutional-neural-networks-in-r/), by
+[Francisco de Abreu e Lima](https://gravatar.com/poissonisfish).
